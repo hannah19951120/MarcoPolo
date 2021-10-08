@@ -1,0 +1,162 @@
+/* 
+	2021.06.21
+	Layout _ 版面
+*/
+* {
+  box-sizing: border-box;
+}
+html {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100vw;
+  // @include rwd($w-table) {
+  //   overflow-x: hidden !important;
+  // }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap {
+  width: 90%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wrap-fluid {
+  width: 100%;
+}
+.nav {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  padding: 20px 0;
+  //區塊版本
+  &--block {
+    position: relative;
+    background-color: $primary;
+    .navList__item {
+      a {
+        color: $white;
+      }
+      &:hover a {
+        color: $secondary-primary;
+      }
+    }
+  }
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &Burger {
+    display: none;
+  }
+  &List {
+    display: flex;
+    &__item {
+      font-weight: $t-bold;
+      margin-right: 37px;
+      a {
+        position: relative;
+        z-index: 5;
+        display: block;
+        padding: 5px;
+        transition: all 0.3s ease;
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          @include size(0%, 2px);
+          background-color: $secondary-primary;
+          bottom: 0;
+          left: 0;
+          transition: all 0.3s ease;
+        }
+      }
+      & a:hover {
+        color: $primary;
+        &::before {
+          @include size(100%, 2px);
+        }
+      }
+    }
+  }
+}
+//pc版fix
+.nav.nav--fix {
+  position: fixed;
+  background-color: rgba($primary, 0.7);
+  padding: 0px 0;
+  z-index: 9999;
+  .navList {
+    h1 {
+      font-size: 1rem;
+    }
+    a {
+      font-size: 1rem;
+      color: $white;
+    }
+  }
+}
+//手機版menu
+.nav {
+  @include rwd($w-table) {
+    position: fixed;
+    padding: 5px 0 !important;
+    background-color: $primary !important;
+    &Burger {
+      @include size(20px, 12px);
+      position: relative;
+      display: block;
+      span {
+        display: block;
+        @include size(20px, 2px);
+        background-color: $white;
+        position: absolute;
+        &:nth-child(1) {
+          top: 0px;
+        }
+        &:nth-child(2) {
+          top: 5px;
+        }
+        &:nth-child(3) {
+          bottom: 0px;
+        }
+      }
+    }
+    &List {
+      z-index: 5;
+      display: block;
+      width: 101%;
+      position: fixed;
+      padding: 5px;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%) translateY(-500px);
+      background-color: rgba($primary, 0.8);
+      text-align: center;
+      transition: all 0.3s ease-out;
+      &__item {
+        border-bottom: 1px solid rgba($white, 0.1);
+        margin-right: 0;
+        &:last-child {
+          border: 0;
+        }
+      }
+      a {
+        font-size: 1rem !important;
+        font-weight: $t-normal !important;
+        color: $white;
+      }
+    }
+    #navBurgerInput:checked + div.navList {
+      transform: translateX(-50%) translateY(38px);
+    }
+  }
+}

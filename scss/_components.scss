@@ -1,0 +1,146 @@
+/* 
+	2021.6.23
+	Components _ 元件
+*/
+/*------------------------------------*\
+ $BUTTON
+\*------------------------------------*/
+.landingBtn {
+  position: relative;
+  padding: 10px 20px;
+  border: 1px solid $muted;
+  display: flex;
+  background-color: none;
+
+  &:hover {
+    border: 1px solid $primary;
+    background-color: $primary;
+    p {
+      color: $white;
+    }
+    .icon--arrow {
+      background-color: $white;
+      &::after {
+        border: 1px solid $white;
+        border-bottom: 0 solid;
+        border-left: 0 solid;
+        left: 0px;
+      }
+    }
+  }
+}
+.icon {
+  &--arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    margin-left: 5px;
+    position: relative;
+    top: 0.4rem;
+    display: block;
+    @include size(10px, 1px);
+    background-color: none;
+    &::after {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      content: "";
+      display: block;
+      position: relative;
+      top: -0.25rem;
+      @include size(8px);
+      transform: rotate(45deg);
+      border: 1px solid $primary;
+      border-bottom: 0 solid;
+      border-left: 0 solid;
+      left: -2px;
+    }
+  }
+}
+/*------------------------------------*\
+ $underLine
+\*------------------------------------*/
+.underLine {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "";
+    display: block;
+    @include size(100%, 70%);
+    bottom: -10%;
+    left: 0;
+    background-color: $primary;
+    z-index: -1;
+  }
+  &--secondary-primary {
+    &:before {
+      background-color: $secondary-primary;
+    }
+  }
+}
+/*------------------------------------*\
+ $card
+\*------------------------------------*/
+.largeCard {
+  padding: 88px 43px;
+  @include size(45%, 438px);
+  border-radius: 11px;
+  background-color: $body;
+  box-shadow: 0 1px 25px 0 rgba(216, 216, 216, 1);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include transition-middle();
+  @include rwd($w-table) {
+    width: 100%;
+  }
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 18px 0 rgba(216, 216, 216, 0.6);
+  }
+}
+
+.middleCard {
+  padding: 50px 40px;
+  padding-right: 10px;
+  width: 25%;
+  overflow: hidden;
+  &__title {
+    position: relative;
+    margin-bottom: 6px;
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      @include size(1.9rem);
+      border-radius: 50%;
+      top: 0.5rem;
+      left: -55px;
+      background-color: $secondary-primary;
+    }
+  }
+  @include rwd($w-table) {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+}
+.landingBtn {
+  position: relative;
+  padding: 10px 20px;
+  border: 1px solid $muted;
+  display: flex;
+  background-color: none;
+
+  &:hover {
+    border: 1px solid $primary;
+    background-color: $primary;
+    p {
+      color: $white;
+    }
+    .icon--arrow {
+      background-color: $white;
+      &::after {
+        border: 1px solid $white;
+        border-bottom: 0 solid;
+        border-left: 0 solid;
+        left: 0px;
+      }
+    }
+  }
+}
